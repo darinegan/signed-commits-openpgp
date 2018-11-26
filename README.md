@@ -1,4 +1,4 @@
-# Readme
+# Git Commit Signing Using GPG
 
 ## Setup
 
@@ -14,21 +14,19 @@ gpg2 --full-gen-key
 
 From your Git repository, execute the following set of commands.
 
+### Signing Parameters
+
 ```
 git config --local commit.gpgsign 'true'
 git config --local gpg.program 'gpg2'
 ```
 
+### Identity Parameters
+
 ```
 git config --local user.name 'John Doe'
 git config --local user.email 'john@doe.com'
 git config --local user.signingkey 'Thumbprint'
-```
-
-### Verify
-
-```
-git config --list --local
 ```
 
 ## Usage
@@ -37,10 +35,24 @@ git config --list --local
 git commit -S -m 'Your Commit Message'
 ```
 
-### Verify
+## Verify
 
 ```
 git cat-file commit HEAD
+
+tree 5ef701a43a7ad615c5442517fc1d9fcdf140ca28
+author Darin Egan <5701436+darinegan@users.noreply.github.com> 1542804946 +0000
+committer Darin Egan <5701436+darinegan@users.noreply.github.com> 1542967470 +0000
+gpgsig -----BEGIN PGP SIGNATURE-----
+ Version: GnuPG v2
+
+ iQIcBAABCAAGBQJb99CuAAoJED6ugZJ/eyqwpTcP/jEozFRON8+G4D8l5Gv8hK0T
+ ...
+ 1QIlgFkE2U+00m3+eKHJ
+ =wz7/
+ -----END PGP SIGNATURE-----
+
+Genesis
 ```
 
 ## References
